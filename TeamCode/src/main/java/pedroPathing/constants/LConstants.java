@@ -2,21 +2,20 @@ package pedroPathing.constants;
 
 import com.pedropathing.localization.*;
 import com.pedropathing.localization.constants.*;
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 
 public class LConstants {
     static {
-        ThreeWheelConstants.forwardTicksToInches = .001989436789;
-        ThreeWheelConstants.strafeTicksToInches = .001989436789;
-        ThreeWheelConstants.turnTicksToInches = .001989436789;
-        ThreeWheelConstants.leftY = 1;
-        ThreeWheelConstants.rightY = -1;
-        ThreeWheelConstants.strafeX = -2.5;
-        ThreeWheelConstants.leftEncoder_HardwareMapName = "leftFront";
-        ThreeWheelConstants.rightEncoder_HardwareMapName = "rightRear";
-        ThreeWheelConstants.strafeEncoder_HardwareMapName = "rightFront";
-        ThreeWheelConstants.leftEncoderDirection = Encoder.REVERSE;
-        ThreeWheelConstants.rightEncoderDirection = Encoder.REVERSE;
-        ThreeWheelConstants.strafeEncoderDirection = Encoder.FORWARD;
+        TwoWheelConstants.forwardTicksToInches = .0045;
+        TwoWheelConstants.strafeTicksToInches = .0043;
+        TwoWheelConstants.forwardY = 6;
+        TwoWheelConstants.strafeX = 7.0;
+        TwoWheelConstants.forwardEncoder_HardwareMapName = "omback";
+        TwoWheelConstants.strafeEncoder_HardwareMapName = "omfront";
+        TwoWheelConstants.forwardEncoderDirection = Encoder.FORWARD;
+        TwoWheelConstants.strafeEncoderDirection = Encoder.REVERSE;
+        TwoWheelConstants.IMU_HardwareMapName = "imu";
+        TwoWheelConstants.IMU_Orientation = new RevHubOrientationOnRobot(RevHubOrientationOnRobot.LogoFacingDirection.DOWN, RevHubOrientationOnRobot.UsbFacingDirection.RIGHT);
     }
 }
 
