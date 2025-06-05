@@ -578,7 +578,7 @@ public class pedroPathOnly extends PedroOpMode {
 //                grabPickup3(),
 //                scorePickup3(),
 //                grabPickup4(),
-//                scorePickup4()
+//                scorePickup4()s
 //        ).invoke();
         new SequentialGroup(
                 new FollowPath(startToCornerBasket,true),
