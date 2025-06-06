@@ -571,15 +571,10 @@ public class slidesUp extends PedroOpMode {
     public void onStartButtonPressed() {
 
                 new SequentialGroup(
-                        Slides.INSTANCE.extendVert(),
+
                         turret.INSTANCE.spinTurretAuto(),
-                        Sample.INSTANCE.basketDepositTee(),
-
-                        Specimen.INSTANCE.resetArm(),
-                        Specimen.INSTANCE.resetHorizontal(),
-                        turret.INSTANCE.resetTurret(),
-                        Slides.INSTANCE.resetVert()
-
+                        new Delay(3),
+                        turret.INSTANCE.resetTurret()
                 ).invoke();
 
 

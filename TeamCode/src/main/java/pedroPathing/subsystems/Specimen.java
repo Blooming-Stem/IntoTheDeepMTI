@@ -101,7 +101,7 @@ public class Specimen extends Subsystem {
         left_shoulder = OpModeData.hardwareMap.servo.get("leftshoulder");
         right_shoulder = OpModeData.hardwareMap.servo.get("rightshoulder");
         elbow = OpModeData.hardwareMap.servo.get("elbow");
-        elbow.setDirection(Servo.Direction.REVERSE);
+//        elbow.setDirection(Servo.Direction.REVERSE);
         elbow.scaleRange(0,1);
         wrist = OpModeData.hardwareMap.servo.get("wrist");
         wrist.setDirection(Servo.Direction.REVERSE);

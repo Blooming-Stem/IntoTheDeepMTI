@@ -39,7 +39,7 @@ public class pedroPathOnly extends PedroOpMode {
      * It is used by the pathUpdate method.
      */
 //    private int pathState;
-    private final Pose startPose = new Pose(8, 104, Math.toRadians(0));
+    private final Pose startPose = new Pose(8, 112, Math.toRadians(0));
     private Path startToCornerBasket,cornerToPickUp1,pickUp1ToCorner,cornerToPickUp2,pickUp2toCorner,cornerToPickUp3, pickUp3ToCorner,line8,line9,line10,line11,line12,line13,line14;
     private PathChain preload,pushSpec;
 

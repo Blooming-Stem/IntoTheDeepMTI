@@ -7,6 +7,7 @@ package pedroPathing.subsystems;
 import com.rowanmcalpin.nextftc.core.Subsystem;
 import com.rowanmcalpin.nextftc.core.command.Command;
 import com.rowanmcalpin.nextftc.core.control.controllers.PIDFController;
+import com.rowanmcalpin.nextftc.ftc.OpModeData;
 import com.rowanmcalpin.nextftc.ftc.hardware.controllables.HoldPosition;
 import com.rowanmcalpin.nextftc.ftc.hardware.controllables.MotorEx;
 import com.rowanmcalpin.nextftc.ftc.hardware.controllables.RunToPosition;
@@ -18,7 +19,9 @@ public class turret extends Subsystem {
 
     public MotorEx turret;
 //    public static double kkkP = 0.015;
+//    public PIDFController p = new PIDFController(0.01,0.0001 , 0.0002,(pos) -> 0.0);
     public PIDFController p = new PIDFController(0.01,0.0001 , 0.0002,(pos) -> 0.0);
+
 
     public Command spinTurret() {
         return new RunToPosition(turret, // MOTOR TO MOVE
@@ -62,9 +65,15 @@ public class turret extends Subsystem {
                 this); // IMPLEMENTED SUBSYSTEM
     }
 
+    @Override
+    public Command getDefaultCommand() {
+        return new HoldPosition(turret, p, this);
+    }
+
 //    @Override
-//    public Command getDefaultCommand() {
-//        return new HoldPosition(turret, p, this);
+//    public void periodic() {
+//        OpModeData.telemetry.addData("turret Position", turret.getCurrentPosition());
+//        OpModeData.telemetry.addData("turret Target", p.getTarget());
 //    }
 
 

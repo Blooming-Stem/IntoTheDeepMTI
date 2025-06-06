@@ -23,8 +23,10 @@ public class Slides extends Subsystem {
     public MotorEx slides2;
     public MotorGroup motorGroup;
 
-    public PIDFController pidf = new PIDFController(0.007,0.0001 , 0.0001,(pos) -> 0.0,100);
-//    public String name = "lift_motor";
+//    public PIDFController pidf = new PIDFController(0.007,0.0001 , 0.0001,(pos) -> 0.0,150);
+
+public PIDFController pidf = new PIDFController(0.015,0.0001 , 0.0001,(pos) -> 0.0,150);
+
 
     public Command extendSlidesToTeleopSpec() {
         setPoint = 1100.0;
@@ -52,9 +54,9 @@ public class Slides extends Subsystem {
     }
 
     public Command extendVert() {
-        setPoint = 960.0;
+        setPoint = 900.0;
         return new RunToPosition(motorGroup, // MOTOR TO MOVE
-                960.0, // TARGET POSITION, IN TICKS
+                900.0, // TARGET POSITION, IN TICKS
                 pidf, // CONTROLLER TO IMPLEMENT
                 this); // IMPLEMENTED SUBSYSTEM
     }
@@ -65,16 +67,16 @@ public class Slides extends Subsystem {
         return new RunToPosition(motorGroup, 364, pidf, this);
     }
 
-//    @Override
-//    public Command getDefaultCommand() {
-//        return new HoldPosition(motorGroup, pidf, this);
-//    }
-
     @Override
-    public void periodic() {
-        OpModeData.telemetry.addData("slide Position", motorGroup.getCurrentPosition());
-        OpModeData.telemetry.addData("slide Target", pidf.getTarget());
+    public Command getDefaultCommand() {
+        return new HoldPosition(motorGroup, pidf, this);
     }
+
+//    @Override
+//    public void periodic() {
+//        OpModeData.telemetry.addData("slide Position", motorGroup.getCurrentPosition());
+//        OpModeData.telemetry.addData("slide Target", pidf.getTarget());
+//    }
 
 
 

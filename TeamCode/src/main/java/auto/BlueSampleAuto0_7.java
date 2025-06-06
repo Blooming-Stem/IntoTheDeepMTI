@@ -584,12 +584,14 @@ public class BlueSampleAuto0_7 extends PedroOpMode {
                 new ParallelGroup(
                         new FollowPath(startToCornerBasket,true),
                         new SequentialGroup(
-                                new InstantCommand(() -> Slides.INSTANCE.extendVert()),
-                                new InstantCommand(() -> turret.INSTANCE.spinTurretAuto()),
-                                new InstantCommand(() -> Sample.INSTANCE.basketDepositTee())
+                                new ParallelGroup(
+                                        Slides.INSTANCE.extendVert(),
+                                        turret.INSTANCE.spinTurretAuto()
+                                ),
+                                Sample.INSTANCE.basketDepositTee()
                         )
                 ),
-                new InstantCommand(() -> claw.INSTANCE.finger.setPosition(1.0)),
+                claw.INSTANCE.openClaw(),
                 new ParallelGroup(
                         new SequentialGroup(
                                 new Delay(0.1),
@@ -609,7 +611,7 @@ public class BlueSampleAuto0_7 extends PedroOpMode {
                         ),
                         new FollowPath(cornerToPickUp1,true)
                 ),
-                new InstantCommand(() -> claw.INSTANCE.finger.setPosition(1.0)),
+                claw.INSTANCE.openClaw(),
                 new InstantCommand(() -> {
                     Sample.INSTANCE.left_shoulder.setPosition(0.4);
                     Sample.INSTANCE.right_shoulder.setPosition(0.4);
@@ -629,7 +631,7 @@ public class BlueSampleAuto0_7 extends PedroOpMode {
                         )
                 ),
                 new Delay(0.25),
-                new InstantCommand(() -> claw.INSTANCE.finger.setPosition(1.0)),
+                claw.INSTANCE.openClaw(),
                 new Delay(0.1),
                 new ParallelGroup(
                         new SequentialGroup(
@@ -650,7 +652,7 @@ public class BlueSampleAuto0_7 extends PedroOpMode {
                         ),
                         new FollowPath(cornerToPickUp2,true)
                 ),
-                new InstantCommand(() -> claw.INSTANCE.finger.setPosition(1.0)),
+                claw.INSTANCE.openClaw(),
                 new InstantCommand(() -> {
                     Specimen.INSTANCE.left_spine.setPosition(0.2);
                     Specimen.INSTANCE.right_spine.setPosition(0.2);
@@ -674,7 +676,7 @@ public class BlueSampleAuto0_7 extends PedroOpMode {
                         )
                 ),
                 new Delay(0.25),
-                new InstantCommand(() -> claw.INSTANCE.finger.setPosition(1.0)),
+                claw.INSTANCE.openClaw(),
                 new Delay(0.1),
                 new ParallelGroup(
                         new SequentialGroup(
@@ -718,7 +720,7 @@ public class BlueSampleAuto0_7 extends PedroOpMode {
                         )
                 ),
                 new Delay(0.25),
-                new InstantCommand(() -> claw.INSTANCE.finger.setPosition(1.0)),
+                claw.INSTANCE.openClaw(),
                 new Delay(0.3),
                 new InstantCommand(() -> {
                     Specimen.INSTANCE.resetArm();
